@@ -7,7 +7,7 @@ WORKDIR /app
 COPY . .
 
 RUN GOPROXY=https://goproxy.io go get -d -v ./...
-RUN go build .  -o jwt-revoker
+RUN go build -o jwt-revoker .
 
 
 # final stage
