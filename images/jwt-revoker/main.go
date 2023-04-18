@@ -6,6 +6,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"io"
 
 	"github.com/krakendio/bloomfilter/v2/rpc/client"
 )
@@ -31,6 +32,25 @@ func main() {
 		c.Add([]byte(subject))
 		log.Printf("adding [%s] %s", *key, subject)
 		http.Redirect(w, r, "/", http.StatusFound)
+	})
+
+	http.HandleFunc("/addheader/", func(w http.ResponseWriter, r *http.Request) {
+
+		val := r.Header.Get( "x-" + *key)
+		if val!="" {
+			subject := *key + "-" +  r.Header.Get( "x-" + *key)
+			c.Add([]byte(subject))
+			log.Printf("adding [%s] %s", *key, subject)
+
+			w.WriteHeader(http.StatusOK)
+			w.Header().Set("Content-Type", "application/json")
+			io.WriteString(w, "{\"status\":\"ok\"}")
+		} else {
+			w.WriteHeader(http.StatusOK)
+			w.Header().Set("Content-Type", "application/json")
+			
+			io.WriteString(w, "{\"status\":\"error\"}")
+		}
 	})
 
 	http.HandleFunc("/check/", func(w http.ResponseWriter, r *http.Request) {
