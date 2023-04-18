@@ -105,3 +105,6 @@ docker run --rm -it -p "8083:8080" --add-host host.docker.internal:host-gateway 
 
 
 to revoke a token the client should request the url "/v1/jwt-revoke" with a token. and it will revoke itself
+because i have not found yet how to call a url after session finishing in key clock i just call it right before log out.
+
+there are problems: if krakend restarts and revoker survives, krakend forgets all revoked tokens, the revoker does not remind krakend about the revoked tokens.
