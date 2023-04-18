@@ -103,3 +103,5 @@ second run jwt revoker.
 
 docker run --rm -it -p "8083:8080" --add-host host.docker.internal:host-gateway doodkin/jwt-revoker ./jwt-revoker -key jti -port 8080 -server host.docker.internal:8034
 
+
+to revoke a token the client should request the url "/v1/jwt-revoke" with a token. and it will revoke itself
