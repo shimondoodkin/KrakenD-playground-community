@@ -179,3 +179,4 @@ To revoke a token the client should request the url "/v1/jwt-revoke" with a toke
 because I have not found yet how to call a url after session finishing in key clock i just call it right before log out.
 
 There are problems: if krakend restarts and revoker survives, krakend forgets all revoked tokens, the revoker does not remind krakend about the revoked tokens.
+also seems it does not reconnect if restarting the krakend.
