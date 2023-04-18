@@ -162,7 +162,8 @@ configure krakend
 }
 ```
 
-Notice krakend "auth/revoker" has an additional listening port. it is go rpc server.
+Notice krakend "auth/revoker" has an additional listening port. it is go rpc server. the revoker client connects to it to ask to block a jti value
+
 
 Run krakend first
 
