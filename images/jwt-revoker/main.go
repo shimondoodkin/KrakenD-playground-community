@@ -34,6 +34,7 @@ func main() {
 		http.Redirect(w, r, "/", http.StatusFound)
 	})
 
+        # add from header, take jti from header
 	http.HandleFunc("/addheader/", func(w http.ResponseWriter, r *http.Request) {
 
 		val := r.Header.Get( "x-" + *key)
