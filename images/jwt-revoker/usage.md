@@ -181,3 +181,4 @@ because I have not found yet how to call a url after session finishing in key cl
 [There are problems](#problems): 
   - if krakend restarts and revoker survives, krakend forgets all revoked tokens, the revoker does not remind krakend about the revoked tokens.
   - also seems it does not reconnect to krakend if restarting the krakend. and it is not scaled, need to restart the revoker also after restarting krakend.
+  - the simple revoker is not saclable, the logout endpoint.
